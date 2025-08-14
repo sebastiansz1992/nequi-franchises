@@ -5,65 +5,35 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.nequi.franchises.application.dto.BranchDto;
-import com.nequi.franchises.domain.model.BranchModel;
-import com.nequi.franchises.domain.repository.implementation.BranchRepositoryImpl;
+import com.nequi.franchises.domain.service.BranchDomainService;
 
 @Service
 public class BranchService {
 
-    private final BranchRepositoryImpl branchRepository;
+    private final BranchDomainService branchDomainService;
 
-    public BranchService(BranchRepositoryImpl branchRepository) {
-        this.branchRepository = branchRepository;
+    public BranchService(BranchDomainService branchDomainService) {
+        this.branchDomainService = branchDomainService;
     }
 
     public BranchDto createBranch(BranchDto branch) {
-        BranchModel branchModel = new BranchModel();
-        branchModel.setName(branch.getName());
-        branchModel.setAddress(branch.getAddress());
-        branchModel.setAddress(branch.getAddress());       
-
-        branchRepository.save(branchModel);
-        
-        return branch;
+        return branchDomainService.createBranch(branch);
     }
 
     public BranchDto getBranch(String id) {
-        BranchModel branchModel = branchRepository.findById(id);
-        if (branchModel != null) {
-            BranchDto branchDto = new BranchDto();
-            branchDto.setId(branchModel.getId());
-            branchDto.setName(branchModel.getName());
-            branchDto.setAddress(branchModel.getAddress());
-            return branchDto;
-        }
-        return null;
+        return branchDomainService.getBranch(id);
     }
 
     public List<BranchDto> getAllBranches() {
-
-        return branchRepository.findAll()
-            .stream()
-            .map(branchModel -> {
-                BranchDto branchDto = new BranchDto();
-                branchDto.setId(branchModel.getId());
-                branchDto.setName(branchModel.getName());
-                branchDto.setAddress(branchModel.getAddress());
-                return branchDto;
-            })
-            .toList();
+        return branchDomainService.getAllBranches();
     }
 
     public void updateBranch(String id, BranchDto branch) {
-        BranchModel branchModel = branchRepository.findById(id);
-        if (branchModel != null) {
-            branchModel.setName(branch.getName());
-            branchModel.setAddress(branch.getAddress());
-            branchRepository.save(branchModel);
-        }
+        branchDomainService.updateBranch(id, branch);
     }
 
     public void deleteBranch(String id) {
-        branchRepository.deleteById(id);
+        branchDomainService.deleteBranch(id);
     }
+    
 }

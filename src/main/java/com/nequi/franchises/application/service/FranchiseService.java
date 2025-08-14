@@ -1,52 +1,39 @@
 package com.nequi.franchises.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.nequi.franchises.application.dto.FranchiseDto;
-import com.nequi.franchises.domain.model.FranchiseModel;
-import com.nequi.franchises.domain.repository.implementation.FranchiseRepositoryImpl;
+import com.nequi.franchises.domain.service.FranchiseDomainService;
 
 @Service
 public class FranchiseService {
 
-    private final FranchiseRepositoryImpl franchiseRepository;
+    private final FranchiseDomainService franchiseDomainService;
 
-    public FranchiseService(FranchiseRepositoryImpl franchiseRepository) {
-        this.franchiseRepository = franchiseRepository;
+    public FranchiseService(FranchiseDomainService franchiseDomainService) {
+        this.franchiseDomainService = franchiseDomainService;
     }
 
     public FranchiseDto createFranchise(FranchiseDto franchise) {
-        FranchiseModel franchiseModel = new FranchiseModel();
-        franchiseModel.setName(franchise.getName());
-
-        franchiseRepository.save(franchiseModel);
-        
-        return franchise;
+        return franchiseDomainService.createFranchise(franchise);
     }
 
     public FranchiseDto getFranchiseById(String id) {
-        FranchiseModel franchiseModel = franchiseRepository.findById(id);
-        if (franchiseModel != null) {
-            FranchiseDto franchiseDto = new FranchiseDto();
-            franchiseDto.setId(franchiseModel.getId());
-            franchiseDto.setName(franchiseModel.getName());
-            return franchiseDto;
-        }
-        return null;
+        return franchiseDomainService.getFranchiseById(id);
+    }
+
+    public List<FranchiseDto> getAllFranchises() {
+        return franchiseDomainService.getAllFranchises();
     }
 
     public FranchiseDto updateFranchise(String id, FranchiseDto franchise) {
-        FranchiseModel franchiseModel = franchiseRepository.findById(id);
-        if (franchiseModel != null) {
-            franchiseModel.setName(franchise.getName());
-            franchiseRepository.save(franchiseModel);
-            return franchise;
-        }
-        return null;
+        return franchiseDomainService.updateFranchise(id, franchise);
     }
 
     public void deleteFranchise(String id) {
-        franchiseRepository.deleteById(id);
+        franchiseDomainService.deleteFranchise(id);
     }
 
 }

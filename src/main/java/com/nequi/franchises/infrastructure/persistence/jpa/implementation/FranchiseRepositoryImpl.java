@@ -1,4 +1,4 @@
-package com.nequi.franchises.domain.repository.implementation;
+package com.nequi.franchises.infrastructure.persistence.jpa.implementation;
 
 import java.util.List;
 
