@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 
 import com.nequi.franchises.application.dto.BranchDto;
 import com.nequi.franchises.domain.model.BranchModel;
-import com.nequi.franchises.domain.repository.BranchRepository;
+import com.nequi.franchises.domain.repository.implementation.BranchRepositoryImpl;
 
 @Service
 public class BranchService {
 
-    private final BranchRepository branchRepository;
+    private final BranchRepositoryImpl branchRepository;
 
-    public BranchService(BranchRepository branchRepository) {
+    public BranchService(BranchRepositoryImpl branchRepository) {
         this.branchRepository = branchRepository;
     }
 

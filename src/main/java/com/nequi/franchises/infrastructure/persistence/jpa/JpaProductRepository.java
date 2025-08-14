@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.nequi.franchises.infrastructure.persistence.entity.ProductEntity;
 
 @Repository
-public interface JpaProductRepository extends JpaRepository<ProductEntity, String> {
+public interface JpaProductRepository extends JpaRepository<ProductEntity, Long> {
 
 }

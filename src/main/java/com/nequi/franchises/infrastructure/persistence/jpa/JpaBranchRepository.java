@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.nequi.franchises.infrastructure.persistence.entity.BranchEntity;
 
 @Repository
-public interface JpaBranchRepository extends JpaRepository<BranchEntity, String> {
+public interface JpaBranchRepository extends JpaRepository<BranchEntity, Long> {
     
 }
