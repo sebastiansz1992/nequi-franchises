@@ -5,29 +5,29 @@ Arquitectura:
 <img width="1250" height="788" alt="image" src="https://github.com/user-attachments/assets/e27d0fe5-9a68-425f-983a-fcbbd9e97c6b" />
 
 1.	Usuario / Cliente
-   -	Envía solicitudes HTTP/HTTPS a través de Internet.
+      -	Envía solicitudes HTTP/HTTPS a través de Internet.
 
 2.	Amazon Route 53 (opcional)
-   -	Si usas un dominio propio, gestionará el enrutamiento de DNS hacia tu servicio.
+      -	Si usas un dominio propio, gestionará el enrutamiento de DNS hacia tu servicio.
 
 3.	Application Load Balancer (ALB)
-   -	Recibe el tráfico HTTP/HTTPS y lo distribuye a las tareas de ECS.
+      -	Recibe el tráfico HTTP/HTTPS y lo distribuye a las tareas de ECS.
 
 4.	Amazon ECS con Fargate
-   -	Ejecuta tu servicio en contenedores.
-   -	Obtiene la imagen desde Amazon ECR.
+      -	Ejecuta tu servicio en contenedores.
+      -	Obtiene la imagen desde Amazon ECR.
 
 5.	Amazon ECR (Elastic Container Registry)
-   -	Almacena la imagen Docker creada a partir de tu Dockerfile.
+      -	Almacena la imagen Docker creada a partir de tu Dockerfile.
 
 6.	Amazon RDS MySQL
-   -	Base de datos relacional donde se almacenan los datos de la aplicación.
-   -	Conectada a ECS dentro de una VPC privada para mayor seguridad.
+      -	Base de datos relacional donde se almacenan los datos de la aplicación.
+      -	Conectada a ECS dentro de una VPC privada para mayor seguridad.
 
 7.	Security Groups y Subnets
-   -	Controlan el acceso a ECS y RDS.
-   -	RDS solo accesible desde ECS.
-   -	ALB en subredes públicas, ECS y RDS en subredes privadas.
+      -	Controlan el acceso a ECS y RDS.
+      -	RDS solo accesible desde ECS.
+      -	ALB en subredes públicas, ECS y RDS en subredes privadas.
 
 ---
 
