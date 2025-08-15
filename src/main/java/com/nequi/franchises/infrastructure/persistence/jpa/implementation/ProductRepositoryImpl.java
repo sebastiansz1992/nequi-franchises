@@ -48,7 +48,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         ProductModel model = new ProductModel();
         model.setId(entity.getId());
         model.setName(entity.getName());
-        model.setPrice(entity.getPrice());
+        model.setDescription(entity.getDescription());
         return model;
     }
 
@@ -56,7 +56,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         ProductEntity entity = new ProductEntity();
         entity.setId(model.getId());
         entity.setName(model.getName());
-        entity.setPrice(model.getPrice());
+        entity.setDescription(model.getDescription());
         return entity;
     }
 

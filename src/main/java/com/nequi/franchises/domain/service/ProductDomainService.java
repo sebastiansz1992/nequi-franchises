@@ -20,7 +20,7 @@ public class ProductDomainService {
     public ProductDto createProduct(ProductDto product) {
         ProductModel productModel = new ProductModel();
         productModel.setName(product.getName());
-        productModel.setPrice(product.getPrice());
+        productModel.setDescription(product.getDescription());
         productRepositoryImpl.save(productModel);
         return product;
     }
@@ -31,7 +31,7 @@ public class ProductDomainService {
             ProductDto productDto = new ProductDto();
             productDto.setId(productModel.getId());
             productDto.setName(productModel.getName());
-            productDto.setPrice(productModel.getPrice());
+            productDto.setDescription(productModel.getDescription());
             return productDto;
         }
         return null;
@@ -43,7 +43,7 @@ public class ProductDomainService {
             ProductDto productDto = new ProductDto();
             productDto.setId(productModel.getId());
             productDto.setName(productModel.getName());
-            productDto.setPrice(productModel.getPrice());
+            productDto.setDescription(productModel.getDescription());
             return productDto;
         }).toList();
     }

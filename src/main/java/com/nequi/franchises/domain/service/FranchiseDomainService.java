@@ -19,10 +19,10 @@ public class FranchiseDomainService {
 
     public FranchiseDto createFranchise(FranchiseDto franchise) {
         FranchiseModel franchiseModel = new FranchiseModel();
-        franchiseModel.setName(franchise.getName());
+        franchiseModel.setName(franchise.getName());        
+        franchiseModel = franchiseRepository.save(franchiseModel);
+        franchise.setId(franchiseModel.getId());
 
-        franchiseRepository.save(franchiseModel);
-        
         return franchise;
     }
 

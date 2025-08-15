@@ -20,11 +20,13 @@ public class BranchDomainService {
     public BranchDto createBranch(BranchDto branch) {
         BranchModel branchModel = new BranchModel();
         branchModel.setName(branch.getName());
-        branchModel.setAddress(branch.getAddress());
-        branchModel.setAddress(branch.getAddress());       
+        branchModel.setLocation(branch.getLocation());
+        branchModel.setFranchiseId(branch.getFranchiseId());
 
-        branchRepository.save(branchModel);
-        
+        branchModel = branchRepository.save(branchModel);
+
+        branch.setId(branchModel.getId());
+
         return branch;
     }
 
@@ -33,8 +35,9 @@ public class BranchDomainService {
         if (branchModel != null) {
             BranchDto branchDto = new BranchDto();
             branchDto.setId(branchModel.getId());
+            branchDto.setFranchiseId(branchModel.getFranchiseId());
             branchDto.setName(branchModel.getName());
-            branchDto.setAddress(branchModel.getAddress());
+            branchDto.setLocation(branchModel.getLocation());
             return branchDto;
         }
         return null;
@@ -47,8 +50,9 @@ public class BranchDomainService {
             .map(branchModel -> {
                 BranchDto branchDto = new BranchDto();
                 branchDto.setId(branchModel.getId());
+                branchDto.setFranchiseId(branchModel.getFranchiseId());
                 branchDto.setName(branchModel.getName());
-                branchDto.setAddress(branchModel.getAddress());
+                branchDto.setLocation(branchModel.getLocation());
                 return branchDto;
             })
             .toList();
@@ -58,7 +62,8 @@ public class BranchDomainService {
         BranchModel branchModel = branchRepository.findById(id);
         if (branchModel != null) {
             branchModel.setName(branch.getName());
-            branchModel.setAddress(branch.getAddress());
+            branchModel.setLocation(branch.getLocation());
+            branchModel.setFranchiseId(branch.getFranchiseId());
             branchRepository.save(branchModel);
         }
     }

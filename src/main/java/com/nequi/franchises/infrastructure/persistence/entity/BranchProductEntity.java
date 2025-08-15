@@ -8,13 +8,19 @@ import jakarta.persistence.Table;
 
 @lombok.Data
 @Entity
-@Table(name = "franchise")
-public class FranchiseEntity {
+@Table(name = "branchproduct")
+public class BranchProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-        
+    private Long branchId;
+
+    private Long productId;
+
+    private Long stock;
+
+    private Double price;
+    
 }

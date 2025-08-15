@@ -25,7 +25,7 @@ public class BranchRepositoryImpl implements BranchRepository {
                 BranchModel branch = new BranchModel();
                 branch.setId(branchModel.getId());
                 branch.setName(branchModel.getName());
-                branch.setAddress(branchModel.getAddress());
+                branch.setLocation(branchModel.getLocation());
                 return branch;
             })
             .orElse(null);
@@ -38,8 +38,9 @@ public class BranchRepositoryImpl implements BranchRepository {
             .map(branchModel -> {
                 BranchModel branch = new BranchModel();
                 branch.setId(branchModel.getId());
+                branch.setFranchiseId(branchModel.getFranchiseId());
                 branch.setName(branchModel.getName());
-                branch.setAddress(branchModel.getAddress());
+                branch.setLocation(branchModel.getLocation());
                 return branch;
             })
             .toList();
@@ -61,7 +62,8 @@ public class BranchRepositoryImpl implements BranchRepository {
     private BranchEntity toEntity(BranchModel model) {
         BranchEntity entity = new BranchEntity();
         entity.setName(model.getName());
-        entity.setAddress(model.getAddress());
+        entity.setFranchiseId(model.getFranchiseId());
+        entity.setLocation(model.getLocation());
         return entity;
     }
 }

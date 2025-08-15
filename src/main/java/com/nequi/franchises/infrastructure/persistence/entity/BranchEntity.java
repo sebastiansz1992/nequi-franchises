@@ -9,17 +9,18 @@ import jakarta.persistence.Table;
 
 @lombok.Data
 @Entity
-@Table(name = "branches")
+@Table(name = "branch")
 public class BranchEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "franchiseId")
+    private Long franchiseId;
+
     private String name;
 
-    @Column(name = "address", nullable = false)
-    private String address;
+    private String location;
 
 }
