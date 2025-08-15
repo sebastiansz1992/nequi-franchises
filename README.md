@@ -77,6 +77,5 @@ docker push <ID_CUENTA>.dkr.ecr.us-east-1.amazonaws.com/mi-servicio:latest
 ---
 
 ## 🔍 Paso 5 - Verificar despliegue
-  - Tipo: Fargate.
-  - Define número de tareas (tasks).
-  - Asigna un Load Balancer si es necesario.
+1. Ve al Service en ECS y revisa que las tareas estén corriendo.
+2. Si tienes un Load Balancer, abre la URL para validar que el servicio responde.
