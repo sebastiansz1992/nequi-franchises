@@ -13,6 +13,9 @@ import com.nequi.franchises.application.dto.BranchDto;
 import com.nequi.franchises.application.service.BranchService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @RequestMapping("/branch")
@@ -29,6 +32,11 @@ public class BranchController {
     @GetMapping
     public ResponseEntity<List<BranchDto>> getAllBranches() {
         return ResponseEntity.ok(branchService.getAllBranches());
+    }
+
+    @PutMapping("/{id}/{name}")
+    public ResponseEntity<BranchDto> updateBranch(@PathVariable("id") String id, @PathVariable("name") String name) {
+        return ResponseEntity.ok(branchService.updateBranch(id, name));
     }
     
 }

@@ -28,8 +28,8 @@ public class FranchiseService {
         return franchiseDomainService.getAllFranchises();
     }
 
-    public FranchiseDto updateFranchise(String id, FranchiseDto franchise) {
-        return franchiseDomainService.updateFranchise(id, franchise);
+    public FranchiseDto updateFranchise(String id, String name) {
+        return franchiseDomainService.updateFranchise(id, name);
     }
 
     public void deleteFranchise(String id) {

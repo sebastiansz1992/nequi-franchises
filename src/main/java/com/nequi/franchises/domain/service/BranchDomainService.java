@@ -58,18 +58,30 @@ public class BranchDomainService {
             .toList();
     }
 
-    public void updateBranch(String id, BranchDto branch) {
+    public BranchDto updateBranch(String id, String name) {
         BranchModel branchModel = branchRepository.findById(id);
         if (branchModel != null) {
-            branchModel.setName(branch.getName());
-            branchModel.setLocation(branch.getLocation());
-            branchModel.setFranchiseId(branch.getFranchiseId());
+            branchModel.setName(name);
             branchRepository.save(branchModel);
+            return toDto(branchModel);
         }
+        return null;
     }
 
     public void deleteBranch(String id) {
         branchRepository.deleteById(id);
     }
-    
+
+    private BranchDto toDto(BranchModel branchModel) {
+        if (branchModel == null) {
+            return null;
+        }
+        BranchDto branchDto = new BranchDto();
+        branchDto.setId(branchModel.getId());
+        branchDto.setFranchiseId(branchModel.getFranchiseId());
+        branchDto.setName(branchModel.getName());
+        branchDto.setLocation(branchModel.getLocation());
+        return branchDto;
+    }
+
 }

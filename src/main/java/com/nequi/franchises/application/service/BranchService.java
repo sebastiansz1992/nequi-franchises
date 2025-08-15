@@ -28,10 +28,10 @@ public class BranchService {
         return branchDomainService.getAllBranches();
     }
 
-    public void updateBranch(String id, BranchDto branch) {
-        branchDomainService.updateBranch(id, branch);
+    public BranchDto updateBranch(String id, String name) {
+        return branchDomainService.updateBranch(id, name);
     }
-
+    
     public void deleteBranch(String id) {
         branchDomainService.deleteBranch(id);
     }

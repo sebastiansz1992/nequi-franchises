@@ -13,6 +13,9 @@ import com.nequi.franchises.application.dto.FranchiseDto;
 import com.nequi.franchises.application.service.FranchiseService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @RequestMapping("/franchise")
@@ -29,6 +32,11 @@ public class FranchiseController {
     @GetMapping
     public ResponseEntity<List<FranchiseDto>> getAllFranchises() {
         return ResponseEntity.ok(franchiseService.getAllFranchises());
+    }
+
+    @PutMapping("/{id}/{name}")
+    public ResponseEntity<FranchiseDto> updateFranchise(@PathVariable("id") String id, @PathVariable("name") String name) {
+        return ResponseEntity.ok(franchiseService.updateFranchise(id, name));
     }
     
 }

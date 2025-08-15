@@ -17,9 +17,6 @@ import com.nequi.franchises.application.service.BranchProductService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 @RestController
 @RequestMapping("/branch-product")

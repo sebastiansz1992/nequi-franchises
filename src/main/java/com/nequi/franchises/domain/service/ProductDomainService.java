@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.nequi.franchises.application.dto.BranchDto;
 import com.nequi.franchises.application.dto.ProductDto;
+import com.nequi.franchises.domain.model.BranchModel;
 import com.nequi.franchises.domain.model.ProductModel;
 import com.nequi.franchises.infrastructure.persistence.jpa.implementation.ProductRepositoryImpl;
 
@@ -52,5 +54,23 @@ public class ProductDomainService {
     public void deleteProductById(String id) {
         productRepositoryImpl.deleteById(id);
     }
-    
+
+    public ProductDto updateProduct(String id, String name) {
+        ProductModel productModel = productRepositoryImpl.findById(id);
+        if (productModel != null) {
+            productModel.setName(name);
+            productRepositoryImpl.save(productModel);
+            return toDto(productModel);
+        }
+        return null;
+    }
+
+    private ProductDto toDto(ProductModel productModel) {
+        ProductDto productDto = new ProductDto();
+        productDto.setId(productModel.getId());
+        productDto.setName(productModel.getName());
+        productDto.setDescription(productModel.getDescription());
+        return productDto;
+    }
+
 }

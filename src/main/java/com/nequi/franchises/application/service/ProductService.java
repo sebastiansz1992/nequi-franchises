@@ -32,4 +32,8 @@ public class ProductService {
         productDomainService.deleteProductById(id);
     }
 
+    public ProductDto updateProduct(String id, String name) {
+        return productDomainService.updateProduct(id, name);
+    }
+
 }

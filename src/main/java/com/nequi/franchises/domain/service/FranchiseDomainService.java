@@ -47,12 +47,12 @@ public class FranchiseDomainService {
         }).toList();
     }
 
-    public FranchiseDto updateFranchise(String id, FranchiseDto franchise) {
+    public FranchiseDto updateFranchise(String id, String name) {
         FranchiseModel franchiseModel = franchiseRepository.findById(id);
         if (franchiseModel != null) {
-            franchiseModel.setName(franchise.getName());
+            franchiseModel.setName(name);
             franchiseRepository.save(franchiseModel);
-            return franchise;
+            return franchiseModelToDto(franchiseModel);
         }
         return null;
     }
@@ -60,5 +60,12 @@ public class FranchiseDomainService {
     public void deleteFranchise(String id) {
         franchiseRepository.deleteById(id);
     }
-    
+
+    private FranchiseDto franchiseModelToDto(FranchiseModel franchiseModel) {
+        FranchiseDto franchiseDto = new FranchiseDto();
+        franchiseDto.setId(franchiseModel.getId());
+        franchiseDto.setName(franchiseModel.getName());
+        return franchiseDto;
+    }
+
 }
