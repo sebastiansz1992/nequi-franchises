@@ -1,5 +1,9 @@
 # Proyecto - Despliegue en AWS con ECS Fargate, ECR y RDS MySQL
 
+Arquitectura:
+
+<img width="1250" height="788" alt="image" src="https://github.com/user-attachments/assets/e27d0fe5-9a68-425f-983a-fcbbd9e97c6b" />
+
 Este proyecto describe cómo desplegar una aplicación en **AWS** utilizando:
 - **Amazon RDS (MySQL)** para la base de datos.
 - **Amazon ECR** para almacenar la imagen Docker.
