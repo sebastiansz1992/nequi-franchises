@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.nequi.franchises.application.dto.BranchProductDto;
-
+import com.nequi.franchises.application.dto.MaxStockProductDto;
 import com.nequi.franchises.domain.model.BranchProductModel;
 import com.nequi.franchises.infrastructure.persistence.jpa.implementation.BranchProductRepositoryImpl;
 
@@ -60,19 +60,31 @@ public class BranchProductDomainService {
             .toList();
     }
 
-    public void updateBranchProduct(Long id, BranchProductDto branch) {
+    public BranchProductDto updateBranchProduct(Long id, Long stock) {
         BranchProductModel branchModel = branchProductRepository.findById(id);
         if (branchModel != null) {
-            branchModel.setBranchId(branch.getBranchId());
-            branchModel.setProductId(branch.getProductId());
-            branchModel.setStock(branch.getStock());
-            branchModel.setPrice(branch.getPrice());
+            branchModel.setStock(stock);
             branchProductRepository.save(branchModel);
         }
+        return convertToDto(branchModel);
     }
 
     public void deleteBranchProduct(Long id) {
         branchProductRepository.deleteById(id);
+    }
+
+    public List<MaxStockProductDto> findMaxStockProductsByFranchise(Long franchiseId) {
+        return branchProductRepository.findMaxStockProductsByFranchise(franchiseId);
+    }
+
+    private BranchProductDto convertToDto(BranchProductModel branchModel) {
+        BranchProductDto branchDto = new BranchProductDto();
+        branchDto.setId(branchModel.getId());
+        branchDto.setBranchId(branchModel.getBranchId());
+        branchDto.setProductId(branchModel.getProductId());
+        branchDto.setStock(branchModel.getStock());
+        branchDto.setPrice(branchModel.getPrice());
+        return branchDto;
     }
 
 }

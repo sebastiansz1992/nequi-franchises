@@ -21,7 +21,8 @@ public class ProductDomainService {
         ProductModel productModel = new ProductModel();
         productModel.setName(product.getName());
         productModel.setDescription(product.getDescription());
-        productRepositoryImpl.save(productModel);
+        productModel = productRepositoryImpl.save(productModel);
+        product.setId(productModel.getId());
         return product;
     }
 

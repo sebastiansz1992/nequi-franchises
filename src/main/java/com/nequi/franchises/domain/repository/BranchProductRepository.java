@@ -2,6 +2,7 @@ package com.nequi.franchises.domain.repository;
 
 import java.util.List;
 
+import com.nequi.franchises.application.dto.MaxStockProductDto;
 import com.nequi.franchises.domain.model.BranchProductModel;
 
 public interface BranchProductRepository {
@@ -9,4 +10,5 @@ public interface BranchProductRepository {
     List<BranchProductModel> findAll();
     void save(BranchProductModel branchProduct);
     void deleteById(Long id);
+    List<MaxStockProductDto> findMaxStockProductsByFranchise(Long franchiseId);
 }

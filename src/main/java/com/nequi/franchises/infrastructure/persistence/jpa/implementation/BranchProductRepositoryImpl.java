@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.nequi.franchises.application.dto.MaxStockProductDto;
 import com.nequi.franchises.domain.model.BranchProductModel;
 import com.nequi.franchises.domain.repository.BranchProductRepository;
 import com.nequi.franchises.infrastructure.persistence.entity.BranchProductEntity;
@@ -42,6 +43,11 @@ public class BranchProductRepositoryImpl implements BranchProductRepository {
     @Override
     public void deleteById(Long id) {
         jpaBranchProductRepository.deleteById(id);
+    }
+
+    @Override
+    public List<MaxStockProductDto> findMaxStockProductsByFranchise(Long franchiseId) {
+        return jpaBranchProductRepository.findMaxStockProductsByFranchise(franchiseId);
     }
 
     private BranchProductModel mapToModel(BranchProductEntity entity) {
